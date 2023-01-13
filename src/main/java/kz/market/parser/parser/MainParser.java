@@ -38,14 +38,14 @@ public class MainParser implements ApplicationRunner {
     private static final Boolean EXPORT_TO_JSON = Boolean.TRUE;
     private static final String FILE_PATH = "parsed_listings.json";
     private static final Map<String, String> URLS = Map.of(
-            "apartments", "https://www.bayut.com/for-sale/apartments/uae/",
-            "villas", "https://www.bayut.com/for-sale/villas/uae/",
-            "townhouses", "https://www.bayut.com/for-sale/townhouses/uae/",
-            "penthouse", "https://www.bayut.com/for-sale/penthouse/uae/",
-            "villa-compound", "https://www.bayut.com/for-sale/villa-compound/uae/",
-            "hotel-apartments", "https://www.bayut.com/for-sale/hotel-apartments/uae/",
-            "residential-plots", "https://www.bayut.com/for-sale/residential-plots/uae/",
-            "residential-floors", "https://www.bayut.com/for-sale/residential-floors/uae/",
+            "apartments",           "https://www.bayut.com/for-sale/apartments/uae/",
+            "villas",               "https://www.bayut.com/for-sale/villas/uae/",
+            "townhouses",           "https://www.bayut.com/for-sale/townhouses/uae/",
+            "penthouse",            "https://www.bayut.com/for-sale/penthouse/uae/",
+            "villa-compound",       "https://www.bayut.com/for-sale/villa-compound/uae/",
+            "hotel-apartments",     "https://www.bayut.com/for-sale/hotel-apartments/uae/",
+            "residential-plots",    "https://www.bayut.com/for-sale/residential-plots/uae/",
+            "residential-floors",   "https://www.bayut.com/for-sale/residential-floors/uae/",
             "residential-building", "https://www.bayut.com/for-sale/residential-building/uae/"
     );
     private static final String ELEMENT_URL_FORMAT = "https://www.bayut.com%s";
@@ -176,8 +176,10 @@ public class MainParser implements ApplicationRunner {
     }
 
     private AgencyCard fillAgencyCard(Document document) {
+        var agentUrl = selectFirstAttribute(document, Selectors.Agency.AGENT_URL, "href");
+
         return AgencyCard.builder()
-                .agentUrl(String.format(ELEMENT_URL_FORMAT, selectFirstAttribute(document, Selectors.Agency.AGENT_URL, "href")))
+                .agentUrl(agentUrl != null ? String.format(ELEMENT_URL_FORMAT, agentUrl) : null)
                 .agencyName(selectFirstString(document, Selectors.Agency.AGENCY_NAME))
                 .agencyImage(selectAgencyName(document))
                 .registrationNumber(selectFirstString(document, Selectors.Agency.REGISTRATION_NUMBER))
