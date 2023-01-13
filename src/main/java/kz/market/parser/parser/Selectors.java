@@ -30,11 +30,11 @@ public class Selectors {
         public static final String FURNISHING           = "[aria-label=\"Furnishing\"]";
         public static final String DATE_POSTED          = "[aria-label=\"Reactivated date\"]";
         public static final String COMPLETION           = "[aria-label=\"Completion status\"]";
-        public static final String AVERAGE_RENT         = "[aria-label=\"Average Rent\"]";
+        public static final String HAS_AVERAGE_RENT     = "[aria-label=\"Average Rent\"]";
+        public static final String AVERAGE_RENT         = "[aria-label=\"Average Rent\"] > div > div > span";
+        public static final String AVERAGE_RENT_FREQ    = "[aria-label=\"Average Rent\"] [aria-label=\"Frequency\"]";
         public static final String TRUE_CHECK           = "[aria-label=\"Trucheck date\"]";
+        public static final String GUIDED_INFO          = "[aria-label=\"Guide link title\"]";
     }
 
-    public static class Features {
-        public static final String ALL_FEATURES         = "";
-    }
 }

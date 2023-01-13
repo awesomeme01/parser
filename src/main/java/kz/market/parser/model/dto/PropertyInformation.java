@@ -18,6 +18,8 @@ public class PropertyInformation {
     private String furnishing;
     private String datePosted;
     private String completion;
+    private Boolean hasAverageRent;
     private String averageRent;
+    private String averageRentFrequency;
     private String trueCheck;
 }

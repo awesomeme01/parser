@@ -23,6 +23,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Getter
@@ -71,5 +72,9 @@ public class Listing {
     @Type(type = "jsonb")
     @Column(name = "optional_data", columnDefinition = "json")
     private OptionalData optionalData;
+
+    @Type(type = "jsonb")
+    @Column(name = "guided_information", columnDefinition = "json")
+    private List<ListingForExportToJson.GuideInformation> guideInformation;
 
 }
